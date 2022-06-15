@@ -1,8 +1,8 @@
 extends KinematicBody2D
 
-const ACCELARATION = 500
-const MAX_SPEED = 130
-const FRICTION = 700
+export var ACCELARATION = 500
+export var MAX_SPEED = 130
+export var FRICTION = 700
 
 enum {
 	MOVE,
