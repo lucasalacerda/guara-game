@@ -1,4 +1,4 @@
-[gd_scene load_steps=56 format=2]
+[gd_scene load_steps=57 format=2]
 
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Enemies/Mob/Robot.tscn" type="PackedScene" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://World/Tile/CliffMetalFloor.png" type="Texture" id=4]
 [ext_resource path="res://World/Objects/IronShelf.tscn" type="PackedScene" id=5]
 [ext_resource path="res://World/Objects/WoodBox.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Enemies/Mob/FlyingRobotOne.tscn" type="PackedScene" id=7]
 
 [sub_resource type="TileSet" id=1]
 0/name = "industry_rusty_tile.png 0"
@@ -531,3 +532,9 @@ position = Vector2( 248.544, 130.218 )
 
 [node name="RobotOne3" parent="YSort" instance=ExtResource( 2 )]
 position = Vector2( 49.9466, 119.515 )
+
+[node name="FlyingRobotOne" parent="YSort" instance=ExtResource( 7 )]
+position = Vector2( 113.844, 30.052 )
+
+[node name="FlyingRobotOne" parent="." instance=ExtResource( 7 )]
+position = Vector2( 74.9532, 74.9532 )
