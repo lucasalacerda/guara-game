@@ -126,19 +126,19 @@ radius = 41.0791
 collision_layer = 16
 script = ExtResource( 3 )
 
-[node name="Shadow" type="Sprite" parent="."]
-texture = ExtResource( 6 )
-offset = Vector2( -1, 14 )
-
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 25 )
 animation = "Walk"
-frame = 20
+frame = 15
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 0, 4.16222 )
 shape = SubResource( 26 )
+
+[node name="Shadow" type="Sprite" parent="."]
+texture = ExtResource( 6 )
+offset = Vector2( -1, 14 )
 
 [node name="Hurtbox" parent="." instance=ExtResource( 2 )]
 collision_layer = 8
@@ -148,7 +148,7 @@ position = Vector2( -0.33371, 4.17138 )
 shape = SubResource( 27 )
 
 [node name="Stats" parent="." instance=ExtResource( 4 )]
-max_health = 2
+max_health = 3
 
 [node name="PlayerDetectionZone" parent="." instance=ExtResource( 5 )]
 

@@ -1,6 +1,8 @@
-extends KinematicBody2D
+extends KinematicBody2D 
 
 const EnemyDeathEffect = preload("res://Effects/EnemyDeathEffect.tscn")
+
+var enemies: Enemy
 
 export var ACCELERATION = 300
 export var MAX_SPEED = 50
@@ -47,7 +49,6 @@ func seek_player():
 		state = CHASE
 
 func _on_Hurtbox_area_entered(area):
-	print("not flying")
 	stats.health -= area.damage
 	knockback = area.knockback_vector * 100
 

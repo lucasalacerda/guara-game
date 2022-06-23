@@ -533,8 +533,8 @@ position = Vector2( 248.544, 130.218 )
 [node name="RobotOne3" parent="YSort" instance=ExtResource( 2 )]
 position = Vector2( 49.9466, 119.515 )
 
+[node name="FlyingRobotOne2" parent="YSort" instance=ExtResource( 7 )]
+position = Vector2( 74.9532, 74.9532 )
+
 [node name="FlyingRobotOne" parent="YSort" instance=ExtResource( 7 )]
 position = Vector2( 113.844, 30.052 )
-
-[node name="FlyingRobotOne" parent="." instance=ExtResource( 7 )]
-position = Vector2( 74.9532, 74.9532 )

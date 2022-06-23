@@ -1,7 +1,11 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://Enemies/Mob/flying_robot_one.png" type="Texture" id=1]
 [ext_resource path="res://Shadows/SmallShadow.png" type="Texture" id=2]
+[ext_resource path="res://Enemies/Mob/FlyingRobotOne.gd" type="Script" id=3]
+[ext_resource path="res://Overlap/Hurtbox.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Enemies/Mob/PlayerDetectionZone.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Stats.tscn" type="PackedScene" id=6]
 
 [sub_resource type="AtlasTexture" id=1]
 atlas = ExtResource( 1 )
@@ -32,22 +36,52 @@ animations = [ {
 } ]
 
 [sub_resource type="CircleShape2D" id=7]
-radius = 4.16159
+radius = 4.29317
+
+[sub_resource type="CircleShape2D" id=9]
+radius = 45.9052
+
+[sub_resource type="CapsuleShape2D" id=10]
+radius = 8.54584
+height = 8.69621
 
 [node name="FlyingRobotOne" type="KinematicBody2D"]
 collision_layer = 16
+script = ExtResource( 3 )
+
+[node name="Shadow" type="Sprite" parent="."]
+texture = ExtResource( 2 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 6 )
 animation = "Animate"
-frame = 1
+frame = 3
 playing = true
 offset = Vector2( 0, -18 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( -2.16911, -0.500568 )
+position = Vector2( 0.0834343, -0.583995 )
 shape = SubResource( 7 )
 
-[node name="Sprite" type="Sprite" parent="."]
-texture = ExtResource( 2 )
-offset = Vector2( -2, 0 )
+[node name="Stats" parent="." instance=ExtResource( 6 )]
+
+[node name="PlayerDetectionZone" parent="." instance=ExtResource( 5 )]
+
+[node name="CollisionShape2D" parent="PlayerDetectionZone" index="0"]
+self_modulate = Color( 1, 1, 1, 0.556863 )
+position = Vector2( -0.316261, -0.324734 )
+shape = SubResource( 9 )
+
+[node name="Hurtbox" parent="." instance=ExtResource( 4 )]
+collision_layer = 8
+
+[node name="CollisionShape2D" parent="Hurtbox" index="0"]
+position = Vector2( 0.187294, -11.2373 )
+shape = SubResource( 10 )
+
+[connection signal="no_health" from="Stats" to="." method="_on_Stats_no_health"]
+[connection signal="area_entered" from="Hurtbox" to="." method="_on_Hurtbox_area_entered"]
+
+[editable path="Stats"]
+[editable path="PlayerDetectionZone"]
+[editable path="Hurtbox"]

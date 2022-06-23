@@ -6,6 +6,7 @@ const HitEffect = preload("res://Effects/HitEffect.tscn")
 
 func _on_Hurtbox_area_entered(area):
 	if show_hit:
+		print("aaa")
 		var effect = HitEffect.instance()
 		var main = get_tree().current_scene
 		main.add_child(effect)
