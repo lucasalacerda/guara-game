@@ -10,12 +10,12 @@ config_version=4
 
 _global_script_classes=[ {
 "base": "KinematicBody2D",
-"class": "Enemy",
+"class": "RobotsBehavior",
 "language": "GDScript",
-"path": "res://Enemies/Enemies.gd"
+"path": "res://Enemies/RobotsBehavior.gd"
 } ]
 _global_script_class_icons={
-"Enemy": ""
+"RobotsBehavior": ""
 }
 
 [application]

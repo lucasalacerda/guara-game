@@ -1,6 +1,6 @@
 extends KinematicBody2D
 
-class_name Enemy
+class_name RobotsBehavior
 
 const EnemyDeathEffect = preload("res://Effects/EnemyDeathEffect.tscn")
 
