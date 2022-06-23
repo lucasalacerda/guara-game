@@ -47,7 +47,6 @@ func seek_player():
 		state = CHASE
 
 func _on_Hurtbox_area_entered(area):
-	print("not flying")
 	stats.health -= area.damage
 	knockback = area.knockback_vector * 100
 
