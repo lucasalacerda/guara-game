@@ -40,7 +40,7 @@ animations = [ {
 radius = 4.29317
 
 [sub_resource type="CircleShape2D" id=8]
-radius = 45.9052
+radius = 63.1769
 
 [sub_resource type="CapsuleShape2D" id=9]
 radius = 8.54584
@@ -61,7 +61,7 @@ texture = ExtResource( 2 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 6 )
 animation = "Animate"
-frame = 4
+frame = 2
 playing = true
 offset = Vector2( 0, -18 )
 

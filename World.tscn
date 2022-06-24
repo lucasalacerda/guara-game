@@ -1,4 +1,4 @@
-[gd_scene load_steps=57 format=2]
+[gd_scene load_steps=59 format=2]
 
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Enemies/Mob/Robot.tscn" type="PackedScene" id=2]
@@ -7,6 +7,8 @@
 [ext_resource path="res://World/Objects/IronShelf.tscn" type="PackedScene" id=5]
 [ext_resource path="res://World/Objects/WoodBox.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Enemies/Mob/FlyingRobotOne.tscn" type="PackedScene" id=7]
+[ext_resource path="res://UI/HealthUI.tscn" type="PackedScene" id=8]
+[ext_resource path="res://World/Objects/IronTable.tscn" type="PackedScene" id=9]
 
 [sub_resource type="TileSet" id=1]
 0/name = "industry_rusty_tile.png 0"
@@ -527,6 +529,14 @@ position = Vector2( 3.84717, 198.007 )
 [node name="WoodBox3" parent="YSort/Box" instance=ExtResource( 6 )]
 position = Vector2( 258.92, -0.118805 )
 
+[node name="IronTable" type="YSort" parent="YSort"]
+
+[node name="IronTable" parent="YSort/IronTable" instance=ExtResource( 9 )]
+position = Vector2( 84.0896, 70.6353 )
+
+[node name="IronTable2" parent="YSort/IronTable" instance=ExtResource( 9 )]
+position = Vector2( 121.51, 9.24986 )
+
 [node name="RobotOne" parent="YSort" instance=ExtResource( 2 )]
 position = Vector2( 167.668, 9.65969 )
 
@@ -544,3 +554,5 @@ position = Vector2( 245.747, 84.6143 )
 
 [node name="FlyingRobotOne3" parent="YSort" instance=ExtResource( 7 )]
 position = Vector2( 155.693, 197.977 )
+
+[node name="HealthUI" parent="." instance=ExtResource( 8 )]
