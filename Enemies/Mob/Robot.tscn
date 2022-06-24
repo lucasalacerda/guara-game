@@ -133,7 +133,7 @@ script = ExtResource( 3 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 25 )
 animation = "Walk"
-frame = 7
+frame = 18
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -165,6 +165,7 @@ shape = SubResource( 28 )
 collision_mask = 4
 
 [node name="CollisionShape2D" parent="Hitbox" index="0"]
+position = Vector2( -0.667419, 5.33936 )
 shape = SubResource( 29 )
 
 [connection signal="area_entered" from="Hurtbox" to="." method="_on_Hurtbox_area_entered"]
