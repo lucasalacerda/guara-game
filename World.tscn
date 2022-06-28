@@ -487,7 +487,11 @@ points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
 [node name="World" type="Node2D"]
 position = Vector2( 0, 1 )
 
-[node name="Sprite" type="Sprite" parent="."]
+[node name="Background" type="Sprite" parent="."]
+position = Vector2( 426.84, 27.9465 )
+scale = Vector2( -423.84, 209.613 )
+texture = ExtResource( 3 )
+region_enabled = true
 
 [node name="MetalFloor" type="TileMap" parent="."]
 tile_set = SubResource( 1 )
@@ -506,6 +510,10 @@ tile_data = PoolIntArray( 196614, 1073741824, 0, 196615, 1073741824, 1, 196616, 
 
 [node name="Player" parent="YSort" instance=ExtResource( 1 )]
 position = Vector2( 48.2482, 32.8517 )
+
+[node name="Camera2D" type="Camera2D" parent="YSort/Player"]
+current = true
+smoothing_enabled = true
 
 [node name="Shelf" type="YSort" parent="YSort"]
 
@@ -555,4 +563,8 @@ position = Vector2( 245.747, 84.6143 )
 [node name="FlyingRobotOne3" parent="YSort" instance=ExtResource( 7 )]
 position = Vector2( 155.693, 197.977 )
 
-[node name="HealthUI" parent="." instance=ExtResource( 8 )]
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="HealthUI" parent="CanvasLayer" instance=ExtResource( 8 )]
+margin_top = 1.0
+margin_bottom = 14.0
