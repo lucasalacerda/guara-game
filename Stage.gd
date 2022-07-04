@@ -3,21 +3,15 @@ extends Node2D
 const DIRECTIONS = [Vector2.RIGHT, Vector2.UP, Vector2.LEFT, Vector2.DOWN]
 const Player = preload("res://Player/Player.tscn")
 const Robot = preload("res://Enemies/Mob/Robot.tscn")
+const FlyingRobot = preload("res://Enemies/Mob/FlyingRobotOne.tscn")
 const Exit = preload("res://World/ExitDoor.tscn")
 const RemoteCamera = preload("res://Utils/RemoteCameraPlayer.tscn")
-const Stage = preload("res://World/Stage.tscn")
+
 var borders = Rect2(1, 1, 40, 22)
+var enemies = []
+var stats = StageStats.new()
 
 onready var tileMap = $CliffMetalFloor
-var count = 0
-
-func _ready():
-
-	var stage = Stage.instance()
-	randomize()
-	
-	generate_level()
-
 
 func render_player(ysort_node, remoteTransform2D, node, pos):
 	var player = Player.instance()
