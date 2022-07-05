@@ -4,6 +4,8 @@ class_name RobotsBehavior
 
 const EnemyDeathEffect = preload("res://Effects/EnemyDeathEffect.tscn")
 
+signal enemy_died
+
 export var ACCELERATION = 300
 export var MAX_SPEED = 50
 export var FRICTION = 200
@@ -87,6 +89,7 @@ func _on_Hurtbox_area_entered(area):
 
 func _on_Stats_no_health():
 	queue_free()
+	emit_signal("enemy_died")
 	var enemy_death_effect = EnemyDeathEffect.instance()
 	get_parent().add_child(enemy_death_effect)
 	enemy_death_effect.global_position = global_position
