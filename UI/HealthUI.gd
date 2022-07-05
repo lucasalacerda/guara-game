@@ -7,8 +7,6 @@ var hearts_sprite_size = 15
 onready var heartUIFull = $HeartUIFull
 onready var heartUIEmpty = $HeartUIEmpty
 
-onready var label = $Label
-
 func set_hearts(value):
 	hearts = clamp(value, 0, max_hearts)
 	if heartUIFull != null:
