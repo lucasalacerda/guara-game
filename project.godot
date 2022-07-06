@@ -10,9 +10,9 @@ config_version=4
 
 _global_script_classes=[ {
 "base": "Node2D",
-"class": "Level",
+"class": "LevelGenerator",
 "language": "GDScript",
-"path": "res://Level.gd"
+"path": "res://LevelGenerator.gd"
 }, {
 "base": "KinematicBody2D",
 "class": "RobotsBehavior",
@@ -30,7 +30,7 @@ _global_script_classes=[ {
 "path": "res://World/Walker.gd"
 } ]
 _global_script_class_icons={
-"Level": "",
+"LevelGenerator": "",
 "RobotsBehavior": "",
 "StageStats": "",
 "Walker": ""
@@ -39,7 +39,7 @@ _global_script_class_icons={
 [application]
 
 config/name="Guara Rogue like"
-run/main_scene="res://World.tscn"
+run/main_scene="res://UI/ui_scenes/LaunchScreen.tscn"
 
 [autoload]
 
