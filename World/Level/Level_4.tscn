@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://World/Tile/industry_rusty_tile.png" type="Texture" id=1]
 [ext_resource path="res://World/Tile/CliffMetalFloor.png" type="Texture" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://World/Objects/IronTable.tscn" type="PackedScene" id=4]
 [ext_resource path="res://World/Objects/WoodBox.tscn" type="PackedScene" id=5]
 [ext_resource path="res://UI/HealthUI.tscn" type="PackedScene" id=6]
+[ext_resource path="res://World/Level/Level_4.gd" type="Script" id=7]
 
 [sub_resource type="TileSet" id=3]
 0/name = "industry_rusty_tile.png 0"
@@ -344,6 +345,7 @@ points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
 0/z_index = 0
 
 [node name="Level_4" type="Node2D"]
+script = ExtResource( 7 )
 
 [node name="MetalFloor" type="TileMap" parent="."]
 tile_set = SubResource( 3 )

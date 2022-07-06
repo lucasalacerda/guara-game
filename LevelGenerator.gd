@@ -7,15 +7,15 @@ signal no_enemies
 var _quantity_enemies = 0 setget set_quantity_enemies
 var _level_number = 0 setget set_level_number
 
-var walker = Walker.new(Vector2(20, 11), borders)
-var remoteTransform2D = RemoteCamera.instance()
-var stats = PlayerStats
-
 const Player = preload("res://Player/Player.tscn")
 const Robot = preload("res://Enemies/Mob/Robot.tscn")
 const FlyingRobot = preload("res://Enemies/Mob/FlyingRobotOne.tscn")
 const Exit = preload("res://World/ExitDoor.tscn")
 const RemoteCamera = preload("res://Utils/RemoteCameraPlayer.tscn")
+
+var walker = Walker.new(Vector2(20, 11), borders)
+var remoteTransform2D = RemoteCamera.instance()
+var stats = PlayerStats
 
 const DIRECTIONS = [Vector2.RIGHT, Vector2.UP, Vector2.LEFT, Vector2.DOWN]
 const borders = Rect2(1, 1, 50, 26)
@@ -50,11 +50,17 @@ func render_player(pos):
 
 func render_robots(map):
 	for i in range(get_quantity_enemies()):
-		var robot = Robot.instance()
-		ysort_node.add_child(robot)
+		var enemy = Robot.instance()
+		if(get_level_number() > 2):
+			var rand = randi() % 50
+			if(rand >= 25):
+				enemy = FlyingRobot.instance()
+			else:
+				enemy = Robot.instance()
+		ysort_node.add_child(enemy)
 		map.shuffle()
 		var position = map.front()*16
-		robot.position = position
+		enemy.position = position
 	
 func next_level():
 	get_tree().change_scene(
@@ -73,7 +79,7 @@ func generate_level():
 	render_robots(map)
 
 	for node in ysort_node.get_children():
-		if(node.name.match("?RobotOne*") || node.name == "RobotOne"):
+		if(node.name.match("*Robot*")):
 			node.connect("enemy_died", self, "enemy_died", [walker])
 
 	generate_tilemap(map)
