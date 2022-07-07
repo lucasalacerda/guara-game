@@ -18,9 +18,9 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -34.0
+margin_left = -32.0
 margin_top = -8.0
-margin_right = 34.0
+margin_right = 36.0
 margin_bottom = 8.0
 text = "Guará jogo"
 __meta__ = {
@@ -28,10 +28,11 @@ __meta__ = {
 }
 
 [node name="Button" type="Button" parent="."]
-margin_left = 64.0
-margin_top = 368.0
-margin_right = 160.0
-margin_bottom = 388.0
+margin_left = 16.0
+margin_top = 176.0
+margin_right = 68.0
+margin_bottom = 196.0
+rect_scale = Vector2( 0.5, 0.5 )
 toggle_mode = true
 text = "Iniciar"
 __meta__ = {

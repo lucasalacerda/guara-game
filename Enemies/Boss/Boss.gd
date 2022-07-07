@@ -1,6 +1,6 @@
 extends KinematicBody2D
 
-class_name RobotsBehavior
+class_name Boss
 
 const EnemyDeathEffect = preload("res://Effects/EnemyDeathEffect.tscn")
 
@@ -23,20 +23,22 @@ var knockback = Vector2.ZERO
 
 var state = CHASE
 
-onready var sprite = $AnimatedSprite
+onready var sprite = $Sprite
+onready var animation_player = $AnimationPlayer
+
 onready var stats = $Stats
 onready var playerDetectionZone = $PlayerDetectionZone
 onready var hutbox = $Hurtbox
 onready var soft_collision = $SoftCollision
 onready var wander_controller = $WanderController
+onready var timer = $AnimationPlayer/Timer
 
 func _ready():
-	state = pick_random_state([IDLE, WANDER])
+	state = pick_random_state([IDLE, WANDER, ATTACK])
 	
 func _physics_process(delta):
 	knockback = knockback.move_toward(Vector2.ZERO, 200 * delta)
 	knockback = move_and_slide(knockback)
-
 	match state:
 		IDLE:
 			velocity = velocity.move_toward(Vector2.ZERO, 200 * delta)
@@ -59,14 +61,20 @@ func _physics_process(delta):
 			if player != null:
 				accelerate_towards_point(player.global_position, delta)
 			else:
-				state = IDLE
-			sprite.flip_h = velocity.x < 0
+				sprite.flip_h = velocity.x < 0
+		ATTACK:
+			attack_state(delta)
 			
 	if soft_collision.is_colliding():
 		velocity += soft_collision.get_push_vector() * delta * 400
 	velocity = move_and_slide(velocity)
 	
+func attack_state(delta):
+	velocity = Vector2.ZERO
+	animation_player.play("attack")
+
 func update_wander():
+	animation_player.play("wander")
 	state = pick_random_state([IDLE, WANDER])
 	wander_controller.start_wander_timer(rand_range(1, 3))
 	
@@ -94,3 +102,9 @@ func _on_Stats_no_health():
 	var enemy_death_effect = EnemyDeathEffect.instance()
 	get_parent().add_child(enemy_death_effect)
 	enemy_death_effect.global_position = global_position
+
+func attack_animation_finished():
+	state = WANDER
+
+#func _on_Timer_timeout():
+#	animation_state.travel("attack")
