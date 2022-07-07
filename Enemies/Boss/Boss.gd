@@ -46,17 +46,8 @@ func _physics_process(delta):
 			
 			if wander_controller.get_time_left() == 0:
 				update_wander()
-		WANDER:
-			seek_player()
-			if wander_controller.get_time_left() == 0:
-				update_wander()
-			
-			accelerate_towards_point(wander_controller.target_position, delta)
-			
-			if global_position.distance_to(wander_controller.target_position) <= WANDER_TARGET_RANGE:
-				update_wander()
-			
 		CHASE:
+			animation_player.play("chase")
 			var player = playerDetectionZone.player
 			if player != null:
 				accelerate_towards_point(player.global_position, delta)
@@ -74,7 +65,6 @@ func attack_state(delta):
 	animation_player.play("attack")
 
 func update_wander():
-	animation_player.play("wander")
 	state = pick_random_state([IDLE, WANDER])
 	wander_controller.start_wander_timer(rand_range(1, 3))
 	
@@ -84,8 +74,9 @@ func accelerate_towards_point(point, delta):
 	sprite.flip_h = velocity.x < 0
 
 func seek_player():
+	animation_player.play("chase")
 	if playerDetectionZone.can_see_player():
-		state = CHASE
+		state = ATTACK
 
 func pick_random_state(state_list):
 	state_list.shuffle()
@@ -104,7 +95,8 @@ func _on_Stats_no_health():
 	enemy_death_effect.global_position = global_position
 
 func attack_animation_finished():
-	state = WANDER
+	state = CHASE
+	timer.start(rand_range(0.4, 2))
 
-#func _on_Timer_timeout():
-#	animation_state.travel("attack")
+func _on_Timer_timeout():
+	state = ATTACK
