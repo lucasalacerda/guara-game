@@ -9,6 +9,11 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "KinematicBody2D",
+"class": "Boss",
+"language": "GDScript",
+"path": "res://Enemies/Boss/Boss.gd"
+}, {
 "base": "Node2D",
 "class": "LevelGenerator",
 "language": "GDScript",
@@ -30,6 +35,7 @@ _global_script_classes=[ {
 "path": "res://World/Walker.gd"
 } ]
 _global_script_class_icons={
+"Boss": "",
 "LevelGenerator": "",
 "RobotsBehavior": "",
 "StageStats": "",
@@ -47,6 +53,8 @@ PlayerStats="*res://Player/PlayerStats.tscn"
 
 [display]
 
+window/size/width=480
+window/size/height=240
 window/size/test_width=1280
 window/size/test_height=720
 window/stretch/mode="2d"
